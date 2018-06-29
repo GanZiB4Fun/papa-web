@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/papa-db" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/papa-db/papa-db-jdbc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/papa-doc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/papa-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/papa-user/papa-user-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/papa-user/papa-user-service" charset="UTF-8" />
+  </component>
+</project>
