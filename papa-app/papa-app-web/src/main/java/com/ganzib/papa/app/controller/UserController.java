@@ -1,7 +1,8 @@
 package com.ganzib.papa.app.controller;
 
 import com.ganzib.papa.user.model.AppUser;
-import com.ganzib.papa.user.service.IAppUserService;
+import com.ganzib.papa.user.service.PapaAppUserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,8 +24,11 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("app/{version}")
 public class UserController {
+
+    private Logger logger = Logger.getLogger(UserController.class);
+
     @Autowired
-    private IAppUserService userService;
+    private PapaAppUserService papaAppUserService;
 
 
     @RequestMapping(value = "/index", method = RequestMethod.GET, produces = {"text/html;charset=UTF-8"})
@@ -34,7 +38,12 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
         if (userId != null) {
-            AppUser appUser = userService.selectById(userId);
+            AppUser appUser = null;
+            try {
+                appUser = papaAppUserService.getUserById(userId);
+            } catch (Exception e) {
+                logger.error("Error ", e);
+            }
             if (appUser != null) {
                 modelAndView.addObject("appUser", appUser);
             }

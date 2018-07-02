@@ -12,7 +12,7 @@
     <artifactId>papa-doc-service</artifactId>
     <packaging>war</packaging>
 
-    <name>papa-doc-service Maven Webapp</name>
+    <name>papa-doc-service</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
@@ -45,6 +45,11 @@
             <groupId>com.ganzib</groupId>
             <artifactId>papa-user-api</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring_version}</version>
         </dependency>
     </dependencies>
 

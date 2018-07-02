@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="papa-user-service:war">
+    <output-path>$PROJECT_DIR$/papa-user/papa-user-service/target</output-path>
+    <root id="archive" name="papa-user-service-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="papa-user-service:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -8,7 +8,7 @@
 
     <!-- 使用multicast广播注册中心暴露发现服务地址 -->
     <dubbo:registry protocol="zookeeper" address="${zookeeper.addr}"/>
-    <dubbo:reference interface="com.ganzib.papa.user.service.IAppUserService" id="appUserService"
-                     check="false"/>
+
+    <dubbo:reference id="papaAppUserService" interface="com.ganzib.papa.user.service.PapaAppUserService" check="true"/>
 
 </beans>
