@@ -62,23 +62,6 @@
     </profiles>
 
     <properties>
-        <blockchain.application.name>news-blockchain-dubbo</blockchain.application.name>
-        <blockchain.application.port>20999</blockchain.application.port>
-        <domain.application.name>news-domain-dubbo</domain.application.name>
-        <domain.application.port>20888</domain.application.port>
-        <stat.application.name>news-stat-dubbo</stat.application.name>
-        <stat.application.port>30888</stat.application.port>
-        <common.application.name>news-common-dubbo</common.application.name>
-        <common.application.port>50888</common.application.port>
-        <data.application.name>news-data-dubbo</data.application.name>
-        <data.application.port>40999</data.application.port>
-        <doc.application.name>news-doc-dubbo</doc.application.name>
-        <doc.application.port>30999</doc.application.port>
-        <user.application.name>news-user-dubbo</user.application.name>
-        <user.application.port>20889</user.application.port>
-        <pay.application.name>news-pay-dubbo</pay.application.name>
-        <pay.application.port>20890</pay.application.port>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <spring_version>4.2.5.RELEASE</spring_version>

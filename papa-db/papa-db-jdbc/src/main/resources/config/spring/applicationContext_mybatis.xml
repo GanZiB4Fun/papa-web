@@ -5,7 +5,7 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!-- MyBatis 动态扫描  -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.swzh.news.*.mapper"/>
+        <property name="basePackage" value="com.ganzib.papa.*.mapper"/>
     </bean>
     <!-- 配置数据源，使用Proxool管理连接池 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
@@ -44,7 +44,7 @@
     <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!-- 自动扫描Mapping.xml文件 -->
-        <property name="typeAliasesPackage" value="com.swzh.news.*.model"/>
+        <property name="typeAliasesPackage" value="com.ganzib.papa.*.model"/>
         <property name="configLocation" value="classpath:config/mybatis/mybatis-config.xml"/>
         <!-- 不增加Mapper限定，则mybatis会对mybatis-config进行多次扫描，报nullpoint -->
         <property name="mapperLocations" value="classpath:config/mybatis/*Mapper.xml"/>
