@@ -17,7 +17,7 @@
         <servlet-name>default</servlet-name>
         <url-pattern>*.js</url-pattern>
         <url-pattern>*.css</url-pattern>
-        <url-pattern>/images/*</url-pattern>
+        <url-pattern>/img/*</url-pattern>
     </servlet-mapping>
     <!-- 项目转码 -->
     <!-- 在Spring框架中是如何解决从页面传来的字符串的编码问题的呢？

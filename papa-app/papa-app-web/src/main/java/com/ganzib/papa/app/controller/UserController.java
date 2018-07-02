@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
  * Email: ganzib4fun@gmail.com
  */
 @Controller
-@RequestMapping("app/{version}")
+@RequestMapping("/user")
 public class UserController {
 
     private Logger logger = Logger.getLogger(UserController.class);
