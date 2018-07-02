@@ -6,10 +6,10 @@
 
     <dubbo:application name="papa-user-dubbo" logger="log4j"/>
 
-    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.addr}"/>
 
-    <dubbo:protocol name="dubbo" port="20982"/>
+    <dubbo:protocol name="dubbo" port="30778"/>
 
-    <dubbo:service protocol="dubbo" retries="0" ref="papaAppUserService"
-                   interface="com.ganzib.papa.user.service.PapaAppUserService" timeout="60000"/>
+    <dubbo:service protocol="dubbo" retries="0" interface="com.ganzib.papa.user.service.PapaAppUserService"
+                   ref="papaAppUserService" timeout="60000"/>
 </beans>

@@ -28,7 +28,7 @@
                 <redis.host>127.0.0.1</redis.host>
                 <redis.pass></redis.pass>
                 <redis.maxTotal>20</redis.maxTotal>
-                <log.path>D://logs</log.path>
+                <log.path>/home/ganzib/logs</log.path>
                 <log.level>INFO</log.level>
                 <api.path>localhost:8080</api.path>
                 <admin.all.path>localhost:8080/admin</admin.all.path>
@@ -50,7 +50,7 @@
                 <redis.host>127.0.0.1</redis.host>
                 <redis.pass></redis.pass>
                 <redis.maxTotal>20</redis.maxTotal>
-                <log.path>D://logs</log.path>
+                <log.path>/home/ganzib/logs</log.path>
                 <log.level>INFO</log.level>
                 <api.path>localhost:8080</api.path>
                 <admin.all.path>localhost:8080/admin</admin.all.path>
