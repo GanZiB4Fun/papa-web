@@ -11,6 +11,6 @@ import com.ganzib.papa.user.model.AppUser;
  * Time: 下午4:48
  * Email: ganzib4fun@gmail.com
  */
-public interface AppUserService extends IService<AppUser> {
+public interface IAppUserService extends IService<AppUser> {
 
 }

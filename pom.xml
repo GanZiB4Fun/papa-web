@@ -12,6 +12,7 @@
         <module>papa-user</module>
         <module>papa-doc</module>
         <module>papa-db</module>
+        <module>papa-app</module>
     </modules>
 
     <profiles>
@@ -21,13 +22,12 @@
                 <jdbc.url>
                     jdbc:mysql://127.0.0.1:3306/papa_web?useUnicode=true&amp;characterEncoding=UTF-8
                 </jdbc.url>
-                <jdbc.username>news</jdbc.username>
-                <jdbc.password>AsfU587xP3</jdbc.password>
+                <jdbc.username>root</jdbc.username>
+                <jdbc.password>root</jdbc.password>
                 <zookeeper.addr>127.0.0.1:2181</zookeeper.addr>
                 <redis.host>127.0.0.1</redis.host>
                 <redis.pass></redis.pass>
                 <redis.maxTotal>20</redis.maxTotal>
-                <mongo.host>localhost</mongo.host>
                 <log.path>D://logs</log.path>
                 <log.level>INFO</log.level>
                 <api.path>localhost:8080</api.path>
@@ -42,15 +42,14 @@
             <id>test</id>
             <properties>
                 <jdbc.url>
-                    jdbc:mysql://rm-m5ek92p85ved2eotbgo.mysql.rds.aliyuncs.com:3306/dbentertais?useUnicode=true&amp;characterEncoding=UTF-8
+                    jdbc:mysql://119.23.43.46:3306/papa_web?useUnicode=true&amp;characterEncoding=UTF-8
                 </jdbc.url>
-                <jdbc.username>news</jdbc.username>
-                <jdbc.password>AsfU587xP3</jdbc.password>
+                <jdbc.username>root</jdbc.username>
+                <jdbc.password>GanZiB4fun!</jdbc.password>
                 <zookeeper.addr>127.0.0.1:2181</zookeeper.addr>
                 <redis.host>127.0.0.1</redis.host>
                 <redis.pass></redis.pass>
                 <redis.maxTotal>20</redis.maxTotal>
-                <mongo.host>localhost</mongo.host>
                 <log.path>D://logs</log.path>
                 <log.level>INFO</log.level>
                 <api.path>localhost:8080</api.path>

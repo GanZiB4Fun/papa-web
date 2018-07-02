@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.2.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <context:component-scan base-package="com.ganzib.papa.app"/>
+
+
+    <!-- 启用spring mvc 注解 -->
+    <context:annotation-config/>
+    <bean id="stringConverter"
+          class="org.springframework.http.converter.StringHttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/plain;charset=UTF-8</value>
+            </list>
+        </property>
+
+    </bean>
+    <bean id="jsonConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+
+    <!-- 完成请求和注解POJO的映射 -->
+    <bean
+            class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="stringConverter"/>
+                <ref bean="jsonConverter"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 上传文件bean -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    </bean>
+
+    <!-- <mvc:resources location="/WEB-INF/jsp/" mapping="/admin/jsp/**"/>
+    <mvc:resources location="/WEB-INF/js/" mapping="/admin/js/**"/>
+    -->
+
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="mediaTypes">
+            <value>
+                html=text/html
+                json=application/json
+            </value>
+        </property>
+        <property name="defaultContentType" value="text/html"/>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
+    </bean>
+
+    <!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 --><!-- 视图解释类 -->
+    <!--<bean id="internalResourceResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF"/>   &lt;!&ndash; 前缀 &ndash;&gt;
+        <property name="suffix" value=".jsp"/>&lt;!&ndash;可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑  &ndash;&gt; &lt;!&ndash; 后缀 &ndash;&gt;
+    </bean>-->
+
+    <bean id="velocityViewResolver"
+          class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="suffix" value=".html"/>
+        <property name="contentType">
+            <value>text/html;charset=UTF-8</value>
+        </property>
+        <property name="exposeSpringMacroHelpers" value="true"/>
+        <property name="exposeSessionAttributes" value="true"/>
+        <property name="toolboxConfigLocation" value="/WEB-INF/toolbox.xml"/>
+    </bean>
+    <bean id="velocityConfigurer"
+          class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="configLocation" value="classpath:velocity.properties"/>
+        <property name="resourceLoaderPath" value="/WEB-INF/velocity/"/>
+    </bean>
+
+
+    <!-- 启动注解驱动的spring MVC功能,注册请求url和注解POJO类方法的映射-->
+    <mvc:annotation-driven/>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--
+
+        &lt;!&ndash; 完成请求和注解POJO的映射 &ndash;&gt;
+        <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+        <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+            <property name="messageConverters">
+                <list>
+                    <ref bean="mappingJackson2HttpMessageConverter"/>
+                </list>
+            </property>
+        </bean>
+
+        &lt;!&ndash; 支持直接返回JSON数据 &ndash;&gt;
+        <bean id="mappingJackson2HttpMessageConverter"
+              class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+            <property name="supportedMediaTypes">
+                <list>
+                    <value>text/html;charset=UTF-8</value>
+                    &lt;!&ndash; <value>application/json;charset=UTF-8</value> &ndash;&gt;
+                </list>
+            </property>
+            <property name="objectMapper">
+                <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                    <property name="serializationInclusion">
+                        <value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
+                    </property>
+                </bean>
+            </property>
+        </bean>
+    -->
+
+</beans>
