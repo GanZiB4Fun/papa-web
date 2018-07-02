@@ -4,11 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <!-- dubbo config -->
 
-    <dubbo:application name="papa-doc-provider" logger="log4j"/>
-
-    <dubbo:protocol name="dubbo" port="30777"/>
+    <dubbo:application name="papa-doc-dubbo" logger="log4j"/>
 
     <dubbo:registry protocol="zookeeper" address="${zookeeper.addr}"/>
+
+    <dubbo:protocol name="dubbo" port="30777"/>
 
     <dubbo:service protocol="dubbo" retries="0" interface="com.ganzib.papa.doc.service.IAppDocumentService"
                    ref="appDocumentService" timeout="60000"/>

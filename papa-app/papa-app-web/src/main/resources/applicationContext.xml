@@ -11,7 +11,7 @@
           class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="locations">
             <list>
-                <value>classpath:zookeeper.properties</value>
+                <value>classpath:*.properties</value>
             </list>
         </property>
     </bean>
