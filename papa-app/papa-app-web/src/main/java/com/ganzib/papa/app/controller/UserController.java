@@ -41,6 +41,7 @@ public class UserController {
             AppUser appUser = null;
             try {
                 appUser = papaAppUserService.getUserById(userId);
+                logger.info("connect into index");
             } catch (Exception e) {
                 logger.error("Error ", e);
             }

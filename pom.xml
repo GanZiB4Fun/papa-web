@@ -20,7 +20,7 @@
             <id>dev</id>
             <properties>
                 <jdbc.url>
-                    jdbc:mysql://127.0.0.1:3306/papa_web?useUnicode=true&amp;characterEncoding=UTF-8&amp;ssl=false
+                    jdbc:mysql://127.0.0.1:3306/papa_web?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false
                 </jdbc.url>
                 <jdbc.username>root</jdbc.username>
                 <jdbc.password>root</jdbc.password>
@@ -42,7 +42,7 @@
             <id>test</id>
             <properties>
                 <jdbc.url>
-                    jdbc:mysql://119.23.43.46:3306/papa_web?useUnicode=true&amp;characterEncoding=UTF-8&amp;ssl=false
+                    jdbc:mysql://119.23.43.46:3306/papa_web?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false
                 </jdbc.url>
                 <jdbc.username>root</jdbc.username>
                 <jdbc.password>GanZiB4fun!</jdbc.password>
