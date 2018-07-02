@@ -31,6 +31,10 @@ hs_err_pid*
 .idea/**/dictionaries
 .idea/**/shelf
 .idea/**/.name
+.idea/**/compiler.xml
+.idea/**/misc.xml
+.idea/**/modules.xml
+.idea/**/vcs.xml
 .idea/**/**.xml
 
 # Sensitive or high-churn files
@@ -39,6 +43,7 @@ hs_err_pid*
 .idea/**/dataSources.local.xml
 .idea/**/sqlDataSources.xml
 .idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
 
 # Gradle
