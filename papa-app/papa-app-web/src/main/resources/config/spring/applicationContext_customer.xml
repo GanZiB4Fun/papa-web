@@ -10,5 +10,6 @@
     <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
 
     <dubbo:reference id="appUserService" interface="com.ganzib.papa.user.service.IAppUserService" check="false"/>
+    <dubbo:reference id="appAdviceMessageService" interface="com.ganzib.papa.doc.service.IAppAdviceMessageService" check="false"/>
 
 </beans>
