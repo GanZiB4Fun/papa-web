@@ -32,7 +32,7 @@ public class UserController {
 
 
     @RequestMapping(value = "/index", method = RequestMethod.GET, produces = {"text/html;charset=UTF-8"})
-    public ModelAndView index(HttpServletRequest request, @PathVariable("version") String version,
+    public ModelAndView index(HttpServletRequest request,
                               @RequestParam(value = "userId", required = false) String userId) {
 
         ModelAndView modelAndView = new ModelAndView();

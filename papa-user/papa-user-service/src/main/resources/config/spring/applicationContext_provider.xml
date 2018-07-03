@@ -11,5 +11,5 @@
     <dubbo:protocol name="dubbo" port="30778"/>
 
     <dubbo:service protocol="dubbo" retries="0" interface="com.ganzib.papa.user.service.IAppUserService"
-                   ref="apUserService" timeout="60000"/>
+                   ref="appUserService" timeout="60000"/>
 </beans>
