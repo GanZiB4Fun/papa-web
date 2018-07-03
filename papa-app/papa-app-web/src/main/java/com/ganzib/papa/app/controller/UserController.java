@@ -1,7 +1,7 @@
 package com.ganzib.papa.app.controller;
 
 import com.ganzib.papa.user.model.AppUser;
-import com.ganzib.papa.user.service.PapaAppUserService;
+import com.ganzib.papa.user.service.IAppUserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,7 @@ public class UserController {
     private Logger logger = Logger.getLogger(UserController.class);
 
     @Autowired
-    private PapaAppUserService papaAppUserService;
+    private IAppUserService iAppUserService;
 
 
     @RequestMapping(value = "/index", method = RequestMethod.GET, produces = {"text/html;charset=UTF-8"})
@@ -40,7 +40,7 @@ public class UserController {
         if (userId != null) {
             AppUser appUser = null;
             try {
-                appUser = papaAppUserService.getUserById(userId);
+                appUser = iAppUserService.getUserById(userId);
                 logger.info("connect into index");
             } catch (Exception e) {
                 logger.error("Error ", e);

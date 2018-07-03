@@ -7,10 +7,10 @@
           <element id="module-output" name="papa-user-service" />
         </element>
         <element id="directory" name="lib">
-          <element id="archive" name="papa-user-api-1.0-SNAPSHOT.jar">
+          <element id="archive" name="papa-user-api-1.0.jar">
             <element id="module-output" name="papa-user-api" />
           </element>
-          <element id="archive" name="papa-db-jdbc-1.0-SNAPSHOT.jar">
+          <element id="archive" name="papa-db-jdbc-1.0.jar">
             <element id="module-output" name="papa-db-jdbc" />
           </element>
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.1.6" />

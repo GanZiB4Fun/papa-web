@@ -7,7 +7,7 @@
     <groupId>com.ganzib</groupId>
     <artifactId>papa</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <modules>
         <module>papa-user</module>
         <module>papa-doc</module>
@@ -29,7 +29,7 @@
                 <redis.pass></redis.pass>
                 <redis.maxTotal>20</redis.maxTotal>
                 <log.path>/home/ganzib/logs</log.path>
-                <log.level>INFO</log.level>
+                <log.level>DEBUG</log.level>
                 <api.path>localhost:8080</api.path>
                 <admin.all.path>localhost:8080/admin</admin.all.path>
             </properties>
@@ -51,7 +51,7 @@
                 <redis.pass></redis.pass>
                 <redis.maxTotal>20</redis.maxTotal>
                 <log.path>/home/ganzib/logs</log.path>
-                <log.level>INFO</log.level>
+                <log.level>DEBUG</log.level>
                 <api.path>localhost:8080</api.path>
                 <admin.all.path>localhost:8080/admin</admin.all.path>
             </properties>

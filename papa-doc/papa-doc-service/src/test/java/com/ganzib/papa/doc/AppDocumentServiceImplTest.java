@@ -1,7 +1,7 @@
 package com.ganzib.papa.doc;
 
 import com.ganzib.papa.user.model.AppUser;
-import com.ganzib.papa.user.service.PapaAppUserService;
+import com.ganzib.papa.user.service.IAppUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class AppDocumentServiceImplTest {
 
     @Autowired
-    private PapaAppUserService appUserService;
+    private IAppUserService appUserService;
 
     @Test
     public void test() {

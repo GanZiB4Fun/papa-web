@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="papa-doc-service:war">
     <output-path>$PROJECT_DIR$/papa-doc/papa-doc-service/target</output-path>
-    <root id="archive" name="papa-doc-service-1.0-SNAPSHOT.war">
+    <root id="archive" name="papa-doc-service-1.0.war">
       <element id="artifact" artifact-name="papa-doc-service:war exploded" />
     </root>
   </artifact>
