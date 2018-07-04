@@ -13,6 +13,7 @@
         <module>papa-doc</module>
         <module>papa-db</module>
         <module>papa-app</module>
+        <module>papa-sprider</module>
     </modules>
 
     <profiles>

@@ -17,8 +17,14 @@ import org.springframework.stereotype.Service;
  */
 @Service("appUserService")
 public class AppUserServiceImpl extends ServiceImpl<AppUserMapper, AppUser> implements IAppUserService {
+
     @Override
     public AppUser getUserById(String userId) {
         return baseMapper.selectById(userId);
+    }
+
+    @Override
+    public Boolean isServiceStart() {
+        return true;
     }
 }

@@ -15,4 +15,10 @@ public interface IAppUserService extends IService<AppUser> {
 
     AppUser getUserById(String userId);
 
+    /**
+     * 测试Dubbo 服务是否启动成功
+     * @return
+     */
+    Boolean isServiceStart();
+
 }

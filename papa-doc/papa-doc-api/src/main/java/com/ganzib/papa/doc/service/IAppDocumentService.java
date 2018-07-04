@@ -13,4 +13,11 @@ import com.ganzib.papa.doc.model.AppDocument;
  * Email: ganzib4fun@gmail.com
  */
 public interface IAppDocumentService extends IService<AppDocument> {
+
+    /**
+     * 测试Dubbo 服务是否启动成功
+     * @return
+     */
+    Boolean isServiceStart();
+
 }

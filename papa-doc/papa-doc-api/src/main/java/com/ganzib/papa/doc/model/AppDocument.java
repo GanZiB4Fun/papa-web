@@ -19,8 +19,8 @@ import java.util.Date;
 public class AppDocument implements Serializable {
     private static final long serialVersionUID = -6873550646491700543L;
 
-    @TableId(type = IdType.AUTO)
-    private Integer docId;
+    @TableId
+    private String docId;
 
     private String title;
 
@@ -34,11 +34,15 @@ public class AppDocument implements Serializable {
 
     private String descri;
 
-    public Integer getDocId() {
+    private String source;
+
+    private String sourceUrl;
+
+    public String getDocId() {
         return docId;
     }
 
-    public void setDocId(Integer docId) {
+    public void setDocId(String docId) {
         this.docId = docId;
     }
 
@@ -90,16 +94,19 @@ public class AppDocument implements Serializable {
         this.descri = descri;
     }
 
-    @Override
-    public String toString() {
-        return "AppDocument{" +
-                "docId=" + docId +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", createTime=" + createTime +
-                ", authorId='" + authorId + '\'' +
-                ", tags='" + tags + '\'' +
-                ", descri='" + descri + '\'' +
-                '}';
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getSourceUrl() {
+        return sourceUrl;
+    }
+
+    public void setSourceUrl(String sourceUrl) {
+        this.sourceUrl = sourceUrl;
     }
 }

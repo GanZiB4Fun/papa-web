@@ -16,4 +16,10 @@ import org.springframework.stereotype.Service;
  */
 @Service("appDocumentService")
 public class AppDocumentServiceImpl extends ServiceImpl<AppDocumentMapper, AppDocument> implements IAppDocumentService {
+
+
+    @Override
+    public Boolean isServiceStart() {
+        return true;
+    }
 }
