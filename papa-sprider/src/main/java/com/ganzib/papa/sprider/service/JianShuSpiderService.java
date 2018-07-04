@@ -148,9 +148,14 @@ public class JianShuSpiderService {
                        String authorHeadImg = infoHtml.xpath("//div[@class='info']/a[@class='avatar']/img/@src").get();
                        authorHeadImg = "https://" + authorHeadImg.substring(2, authorHeadImg.indexOf("?"));
                        String publishTimeStr = infoHtml.xpath("//span[@class='publish-time']/text()").get();
+                       appDocument.setPublishTime(new Date());
                        if (publishTimeStr != null) {
-                           Date publishTime = DateUtils.DatePattern.PATTERN_DATE_YMD_POINT_HM.getDate(publishTimeStr);
-                           appDocument.setPublishTime(publishTime);
+                           try {
+                               Date publishTime = DateUtils.DatePattern.PATTERN_DATE_YMD_POINT_HM.getDate(publishTimeStr);
+                               appDocument.setPublishTime(publishTime);
+                           } catch (Exception e) {
+                               logger.error("error publish time can't parse");
+                           }
                        }
                        appDocument.setDocId(articleId);
                        appDocument.setTitle(title);
