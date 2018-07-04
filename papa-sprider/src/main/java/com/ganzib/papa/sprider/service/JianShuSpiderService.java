@@ -146,7 +146,9 @@ public class JianShuSpiderService {
                        String content = infoHtml.xpath("//div[@class='show-content-free']/").get();
                        content = content.replace("data-original-src=\"//", "src=\"http://").replace("data-original-", "");
                        String authorHeadImg = infoHtml.xpath("//div[@class='info']/a[@class='avatar']/img/@src").get();
-                       authorHeadImg = "https://" + authorHeadImg.substring(2, authorHeadImg.indexOf("?"));
+                       if (authorHeadImg != null) {
+                           authorHeadImg = "https://" + authorHeadImg.substring(2, authorHeadImg.indexOf("?"));
+                       }
                        String publishTimeStr = infoHtml.xpath("//span[@class='publish-time']/text()").get();
                        appDocument.setPublishTime(new Date());
                        if (publishTimeStr != null) {
@@ -167,7 +169,7 @@ public class JianShuSpiderService {
                        appDocument.setCreateTime(new Date());
                        appDocument.setContent(content);
                        appDocument.setAuthorName(authorHeadImg);
-
+                       System.out.println(appDocument);
                    }
                }
            }
