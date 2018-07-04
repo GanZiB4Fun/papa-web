@@ -2,8 +2,10 @@ package com.ganzib.papa.sprider.service;
 
 import com.ganzib.papa.doc.model.AppDocument;
 import com.ganzib.papa.doc.service.IAppDocumentService;
+import com.ganzib.papa.sprider.constant.SHA1;
 import com.ganzib.papa.sprider.constant.WebConstant;
 import com.ganzib.papa.sprider.thread.SpriderThreadPool;
+import com.ganzib.papa.support.date.DateUtils;
 import com.ganzib.papa.user.service.IAppUserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import us.codecraft.webmagic.selector.Html;
 
 import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -95,21 +98,22 @@ public class JianShuSpiderService {
             for (String divStr : divList){
                 Html divHtml = new Html(divStr);
                 String url = divHtml.xpath("//div[@class='collection-wrap']/a/@href").get();
-                url = "https://www.jianshu.com/" + url;
-                Page articlePage = null;
-                try {
-                    articlePage = new HttpClientDownloader().download(new Request(url),site.toTask());
-                }catch (Exception e){
-                    logger.error("Http connect error ",e);
-                }
-                if (articlePage!=null){
-                    Html articleListHtml = articlePage.getHtml();
-                    List<String> articleDivList = articleListHtml.xpath("//ul[@class='note-list']").all();
-                    for (String articleDiv : articleDivList){
-                        ansySpider(articleDiv);
+                for (int i = 0; i <= 10; i++) {
+                    String realUrl = "https://www.jianshu.com/" + url + "?order_by=added_at&page=" + i;
+                    Page articlePage = null;
+                    try {
+                        articlePage = new HttpClientDownloader().download(new Request(realUrl), site.toTask());
+                    } catch (Exception e) {
+                        logger.error("Http connect error ", e);
+                    }
+                    if (articlePage != null) {
+                        Html articleListHtml = articlePage.getHtml();
+                        List<String> articleDivList = articleListHtml.xpath("//ul[@class='note-list']/li/div[@class='content']").all();
+                        for (String articleDiv : articleDivList) {
+                            ansySpider(articleDiv);
+                        }
                     }
                 }
-
             }
         }
 
@@ -120,11 +124,47 @@ public class JianShuSpiderService {
            public void run() {
                AppDocument appDocument = new AppDocument();
                Html html = new Html(divStr);
-               String title = html.xpath("//div[@class='content']/a[@class='title']/text()").get();
-               String desc = html.xpath("//div[@class='content']/p[@class='abstract']/text()").get();
                String img = html.xpath("//a[@class='wrap-img']/img/@src").get();
-               img = img.substring(2,img.indexOf("?"));
-               System.out.println(img);
+               if (img != null) {
+                   img = "http://" + img.substring(2, img.indexOf("?"));
+               }
+               String infoUrl = html.xpath("//div[@class='content']/a[@class='title']/@href").get();
+               if (infoUrl != null) {
+                   infoUrl = "https://www.jianshu.com" + infoUrl;
+                   String articleId = SHA1.encode(infoUrl);
+                   Page infoPage = null;
+                   try {
+                       infoPage = new HttpClientDownloader().download(new Request(infoUrl), site.toTask());
+                   } catch (Exception e) {
+                       logger.error("Http connect error ", e);
+                   }
+                   if (infoPage != null) {
+                       Html infoHtml = infoPage.getHtml();
+                       String title = infoHtml.xpath("//meta[@property='twitter:title']/@content").get();
+                       String description = infoHtml.xpath("//meta[@name='description']/@content").get();
+                       String authorName = infoHtml.xpath("//div[@class='info']/span[@class='name']/allText()").get();
+                       String content = infoHtml.xpath("//div[@class='show-content-free']/").get();
+                       content = content.replace("data-original-src=\"//", "src=\"http://").replace("data-original-", "");
+                       String authorHeadImg = infoHtml.xpath("//div[@class='info']/a[@class='avatar']/img/@src").get();
+                       authorHeadImg = "https://" + authorHeadImg.substring(2, authorHeadImg.indexOf("?"));
+                       String publishTimeStr = infoHtml.xpath("//span[@class='publish-time']/text()").get();
+                       if (publishTimeStr != null) {
+                           Date publishTime = DateUtils.DatePattern.PATTERN_DATE_YMD_POINT_HM.getDate(publishTimeStr);
+                           appDocument.setPublishTime(publishTime);
+                       }
+                       appDocument.setDocId(articleId);
+                       appDocument.setTitle(title);
+                       appDocument.setDescri(description);
+                       appDocument.setSource("www.jianshu.com");
+                       appDocument.setSourceUrl(infoUrl);
+                       appDocument.setAuthorName(authorName);
+                       appDocument.setCoverImg(img);
+                       appDocument.setCreateTime(new Date());
+                       appDocument.setContent(content);
+                       appDocument.setAuthorName(authorHeadImg);
+
+                   }
+               }
            }
        });
     }

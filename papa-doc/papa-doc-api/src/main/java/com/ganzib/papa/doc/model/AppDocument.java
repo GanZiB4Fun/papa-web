@@ -38,6 +38,14 @@ public class AppDocument implements Serializable {
 
     private String sourceUrl;
 
+    private String coverImg;
+
+    private Date publishTime;
+
+    private String authorName;
+
+    private String authorHeadImg;
+
     public String getDocId() {
         return docId;
     }
@@ -108,5 +116,56 @@ public class AppDocument implements Serializable {
 
     public void setSourceUrl(String sourceUrl) {
         this.sourceUrl = sourceUrl;
+    }
+
+    public String getCoverImg() {
+        return coverImg;
+    }
+
+    public void setCoverImg(String coverImg) {
+        this.coverImg = coverImg;
+    }
+
+    public Date getPublishTime() {
+        return publishTime;
+    }
+
+    public void setPublishTime(Date publishTime) {
+        this.publishTime = publishTime;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public String getAuthorHeadImg() {
+        return authorHeadImg;
+    }
+
+    public void setAuthorHeadImg(String authorHeadImg) {
+        this.authorHeadImg = authorHeadImg;
+    }
+
+    @Override
+    public String toString() {
+        return "AppDocument{" +
+                "docId='" + docId + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", createTime=" + createTime +
+                ", authorId='" + authorId + '\'' +
+                ", tags='" + tags + '\'' +
+                ", descri='" + descri + '\'' +
+                ", source='" + source + '\'' +
+                ", sourceUrl='" + sourceUrl + '\'' +
+                ", coverImg='" + coverImg + '\'' +
+                ", publishTime=" + publishTime +
+                ", authorName='" + authorName + '\'' +
+                ", authorHeadImg='" + authorHeadImg + '\'' +
+                '}';
     }
 }
