@@ -11,5 +11,6 @@
 
     <dubbo:reference id="appUserService" interface="com.ganzib.papa.user.service.IAppUserService" check="false"/>
     <dubbo:reference id="appAdviceMessageService" interface="com.ganzib.papa.doc.service.IAppAdviceMessageService" check="false"/>
+    <dubbo:reference id="appDocumentService" interface="com.ganzib.papa.doc.service.IAppDocumentService" check="false"/>
 
 </beans>

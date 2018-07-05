@@ -2,4 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ganzib.papa.doc.mapper.AppDocumentMapper">
 
+    <sql id="whereList">
+        <where>
+            <if test="paramMap.title!=null and paramMap.title!=''">
+                and title like CONCAT('%',#{paramMap.title},'%')
+            </if>
+            <if test="paramMap.tag != null">
+                and tags = #{paramMap.tag}
+            </if>
+            <if test="paramMap.author != null">
+                and author_name = #{paramMap.author}
+            </if>
+        </where>
+    </sql>
+
+    <select id="getArticleList" resultType="com.ganzib.papa.doc.model.AppDocument">
+        SELECT
+        doc_id,title,create_time,tags,descri,source,cover_img
+        FROM
+        app_document
+        <include refid="whereList"/>
+        ORDER BY create_time DESC
+    </select>
 </mapper>

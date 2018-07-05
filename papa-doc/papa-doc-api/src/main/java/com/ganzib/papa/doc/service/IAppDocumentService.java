@@ -1,8 +1,12 @@
 package com.ganzib.papa.doc.service;
 
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 import com.ganzib.papa.doc.model.AppDocument;
+import com.ganzib.papa.support.util.Pager;
+
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,5 +23,7 @@ public interface IAppDocumentService extends IService<AppDocument> {
      * @return
      */
     Boolean isServiceStart();
+
+    Page<AppDocument> pageFindByParams(Map<String, Object> paramsMap, Pager pager);
 
 }

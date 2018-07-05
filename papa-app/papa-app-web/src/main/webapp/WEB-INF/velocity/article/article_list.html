@@ -3,11 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>文章列表</title>
-    #parse("common/linkFile.html")
-    <link rel="stylesheet" type="text/css" href="/css/jianshu-page-list.css">
-    <link rel="stylesheet" type="text/css" href="/css/jianshu-web.css">
+    <link rel="stylesheet" type="text/css" href="/css/jianshu_list.css">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
 </head>
-<body>
+<body lang="zh-CN" class="reader-black-font">
+<div class="container collection">
+    <div class="row">
+        <div class="col-xs-24 col-sm-16 main">
 
+            <div id="list-container">
+                <div class="container">
+                    <!-- 文章列表模块 -->
+                    <ul class="note-list">
+                        #if($!{articleList}&&$!{articleList.size()}>0)
+                        #foreach($article in $!{articleList})
+                        <li class="">
+                            <div class="content">
+                                <a class="title" target="_blank" href="/article/info?id=$!{article.docId}">$!{article.title}</a>
+                                <p class="abstract">
+                                    $!{article.descri}
+                                </p>
+                                <div class="meta">
+                                    <a class="nickname" target="_blank"
+                                       href="/article/author?author=$!{article.authorName}">$!{article.authorName}</a>
+                                </div>
+                            </div>
+                        </li>
+                        #end
+                        #end
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container large">
+    <div class="pagination">
+        <ul>
+            <li> <a href="javascript:void(0)">1</a> </li>
+            <li class="active"> <a href="javascript:void(0)">3</a> </li>
+            <li> <a href="javascript:void(0)">...</a> </li>
+            <li> <a href="javascript:void(0)">5</a> </li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>

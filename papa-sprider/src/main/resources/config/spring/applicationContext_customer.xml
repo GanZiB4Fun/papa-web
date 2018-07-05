@@ -6,10 +6,11 @@
     <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
     <dubbo:application name="papa-spider-dubbo"/>
 
-    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
     <dubbo:registry protocol="zookeeper" address="${zookeeper.addr}"/>
 
     <dubbo:reference interface="com.ganzib.papa.user.service.IAppUserService" id="appUserService" check="false"/>
     <dubbo:reference interface="com.ganzib.papa.doc.service.IAppDocumentService" id="appDocumentService" check="false"/>
+    <dubbo:reference interface="com.ganzib.papa.doc.service.IAppJianShuSpiderAuthorService"
+                     id="appJianShuSpiderAuthorService" check="false"/>
 
 </beans>

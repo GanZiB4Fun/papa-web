@@ -14,4 +14,6 @@
                    ref="appDocumentService" timeout="60000"/>
     <dubbo:service protocol="dubbo" retries="0" interface="com.ganzib.papa.doc.service.IAppAdviceMessageService"
                    ref="appAdviceMessageService" timeout="60000"/>
+    <dubbo:service protocol="dubbo" retries="0" interface="com.ganzib.papa.doc.service.IAppJianShuSpiderAuthorService"
+                   ref="appJianShuSpiderAuthorService" timeout="60000"/>
 </beans>
