@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>文章列表</title>
+    #parse("common/linkFile.html")
     <link rel="stylesheet" type="text/css" href="/css/jianshu_list.css">
     <link rel="stylesheet" type="text/css" href="/css/page.css">
 </head>
@@ -19,13 +20,13 @@
                         #foreach($article in $!{articleList})
                         <li class="">
                             <div class="content">
-                                <a class="title" target="_blank" href="/article/info?id=$!{article.docId}">$!{article.title}</a>
+                                <a class="title" target="_blank" href="/article/info?docId=$!{article.docId}">$!{article.title}</a>
                                 <p class="abstract">
                                     $!{article.descri}
                                 </p>
                                 <div class="meta">
                                     <a class="nickname" target="_blank"
-                                       href="/article/author?author=$!{article.authorName}">$!{article.authorName}</a>
+                                       href="/article/list?page=1&rows=10&author=$!{article.authorName}">$!{article.authorName}</a>
                                 </div>
                             </div>
                         </li>

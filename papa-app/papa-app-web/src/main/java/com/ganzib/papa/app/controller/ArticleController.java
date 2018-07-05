@@ -3,6 +3,7 @@ package com.ganzib.papa.app.controller;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.ganzib.papa.doc.model.AppDocument;
 import com.ganzib.papa.doc.service.IAppDocumentService;
+import com.ganzib.papa.support.date.DateUtils;
 import com.ganzib.papa.support.util.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,12 +26,12 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/article")
-public class ArticleController{
+public class ArticleController {
 
     @Autowired
     private IAppDocumentService appDocumentService;
 
-    @RequestMapping(value = "/article_list", method = RequestMethod.GET, produces = {"text/html;charset=UTF-8"})
+    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = {"text/html;charset=UTF-8"})
     public ModelAndView docListPage(HttpServletRequest request,
                                     @RequestParam(value = "page", required = false) Integer pageIndex,
                                     @RequestParam(value = "rows", required = false) Integer rows,
@@ -45,6 +46,26 @@ public class ArticleController{
         paramMap.put("author", author);
         Page<AppDocument> appDocumentPage = appDocumentService.pageFindByParams(paramMap, pager);
         modelAndView.addObject("articleList", appDocumentPage.getRecords());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/info",method = RequestMethod.GET, produces = {"text/html;charset=UTF-8"})
+    public ModelAndView articleInfo(HttpServletRequest request,
+                                    @RequestParam(value = "docId", required = true) String docId) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        AppDocument appDocument = appDocumentService.selectById(docId);
+        if (appDocument!=null){
+            appDocument.setContent(appDocument.getContent().replace("简书"," ·违法犯罪GanZiB· "));
+            appDocumentService.updateById(appDocument);
+            modelAndView.addObject("appDocument",appDocument);
+            String publishTime = DateUtils.DatePattern.PATTERN_DATE_YMD_POINT_HM.getDateStr(appDocument.getPublishTime());
+            modelAndView.addObject("publishTime",publishTime);
+            modelAndView.setViewName("/article/article_info");
+        }else {
+            modelAndView.setViewName("index");
+        }
+
         return modelAndView;
     }
 

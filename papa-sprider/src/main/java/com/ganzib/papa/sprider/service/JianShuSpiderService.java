@@ -81,7 +81,7 @@ public class JianShuSpiderService {
     }
 
 //    @Scheduled(cron = "0 0/10 * * * ?")
-    @Scheduled(cron = "0 12 11 ? * *")
+    @Scheduled(cron = "0 12 18 ? * *")
     public void spider() {
         logger.info("jian shu spider task start");
         if (!startFlag) {
@@ -157,7 +157,7 @@ public class JianShuSpiderService {
                 String title = infoHtml.xpath("//meta[@property='twitter:title']/@content").get();
                 String description = infoHtml.xpath("//meta[@name='description']/@content").get();
                 String authorName = infoHtml.xpath("//div[@class='info']/span[@class='name']/allText()").get();
-                String content = infoHtml.xpath("//div[@class='show-content-free']/").get();
+                String content = infoHtml.xpath("//div[@class='show-content-free']").get();
                 content = content.replace("data-original-src=\"//", "src=\"http://").replace("data-original-", "");
                 String authorHeadImg = infoHtml.xpath("//div[@class='info']/a[@class='avatar']/img/@src").get();
                 if (authorHeadImg != null) {
@@ -197,11 +197,11 @@ public class JianShuSpiderService {
                 appDocument.setDescri(EmojiParser.parseToAliases(description));
                 appDocument.setSource("www.jianshu.com");
                 appDocument.setSourceUrl(infoUrl);
-                appDocument.setAuthorName(authorName);
+                appDocument.setAuthorHeadImg(authorHeadImg);
                 appDocument.setCoverImg(img);
                 appDocument.setCreateTime(new Date());
                 appDocument.setContent(EmojiParser.parseToAliases(content));
-                appDocument.setAuthorName(authorHeadImg);
+                appDocument.setAuthorName(authorName);
                 appDocument.setTags(tag);
                 try {
                     appDocumentService.insert(appDocument);

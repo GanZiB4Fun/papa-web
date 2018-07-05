@@ -2,12 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>文章详情</title>
+    <title>$!{appDocument.title}</title>
     #parse("common/linkFile.html")
-    <link rel="stylesheet" type="text/css" href="/css/jianshu-page-list.css">
-    <link rel="stylesheet" type="text/css" href="/css/jianshu-web.css">
+    <link rel="stylesheet" type="text/css" href="/css/jianshu_entry.css">
 </head>
-<body>
+<body lang="zh-CN" class="reader-black-font">
+<div class="note">
 
+    <div class="post">
+        <div class="article">
+            <h1 class="title">$!{appDocument.title}</h1>
+
+            <!-- 作者区域 -->
+            <div class="author">
+                <a class="avatar" href="#">
+                    <img src="$!{appDocument.authorHeadImg}"
+                         alt="96"/>
+                </a>
+                <div class="info">
+                    <span class="name"><a href="#">$!{appDocument.authorName}</a></span>
+                    <img class="badge-icon" data-toggle="tooltip" title=""
+                         src="http://upload.jianshu.io/user_badge/db3aaf4f-effd-43dc-9137-d6bf7f70211e"
+                         alt="Db3aaf4f effd 43dc 9137 d6bf7f70211e"/>
+                    <!-- 关注用户按钮 -->
+                    <!-- 文章数据信息 -->
+                    <div class="meta">
+                        <!-- 如果文章更新时间大于发布时间，那么使用 tooltip 显示更新时间 -->
+                        <span class="publish-time">$!{publishTime}</span>
+                    </div>
+                </div>
+                <!-- 如果是当前作者，加入编辑按钮 -->
+            </div>
+            <!-- 文章内容 -->
+            <div data-note-content class="show-content">
+                <div data-note-content="" class="show-content">
+                    $!{appDocument.content}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
