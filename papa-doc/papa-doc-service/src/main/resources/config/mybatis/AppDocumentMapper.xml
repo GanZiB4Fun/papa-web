@@ -24,4 +24,11 @@
         <include refid="whereList"/>
         ORDER BY create_time DESC
     </select>
+    <select id="getAllArticleList" resultType="com.ganzib.papa.doc.model.AppDocument">
+        SELECT
+        doc_id,title,content,create_time,tags,descri,source,cover_img
+        FROM
+        app_document
+        ORDER BY create_time DESC
+    </select>
 </mapper>

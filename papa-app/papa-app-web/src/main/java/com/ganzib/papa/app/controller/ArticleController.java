@@ -39,30 +39,44 @@ public class ArticleController {
                                     @RequestParam(value = "tag", required = false) String tag) {
         ModelAndView modelAndView = new ModelAndView("article/article_list");
         Pager pager = new Pager();
+        if (pageIndex == null) {
+            pageIndex = 1;
+        }
+        if (rows == null || rows > 100) {
+            rows = 10;
+        }
         pager.setPageIndex(pageIndex);
         pager.setPageSize(rows);
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("tag", tag);
         paramMap.put("author", author);
         Page<AppDocument> appDocumentPage = appDocumentService.pageFindByParams(paramMap, pager);
-        modelAndView.addObject("articleList", appDocumentPage.getRecords());
+        if (appDocumentPage != null) {
+            if (pageIndex > 1) {
+                modelAndView.addObject("previousPage", pageIndex - 1);
+
+            }
+            modelAndView.addObject("currentPage", appDocumentPage.getCurrent());
+            modelAndView.addObject("nextPage", pageIndex + 1);
+            modelAndView.addObject("articleList", appDocumentPage.getRecords());
+        }
         return modelAndView;
     }
 
-    @RequestMapping(value = "/info",method = RequestMethod.GET, produces = {"text/html;charset=UTF-8"})
+    @RequestMapping(value = "/info", method = RequestMethod.GET, produces = {"text/html;charset=UTF-8"})
     public ModelAndView articleInfo(HttpServletRequest request,
                                     @RequestParam(value = "docId", required = true) String docId) {
         ModelAndView modelAndView = new ModelAndView();
 
         AppDocument appDocument = appDocumentService.selectById(docId);
-        if (appDocument!=null){
-            appDocument.setContent(appDocument.getContent().replace("简书"," ·违法犯罪GanZiB· "));
+        if (appDocument != null) {
+            appDocument.setContent(appDocument.getContent().replace("简书", " ·违法犯罪GanZiB· "));
             appDocumentService.updateById(appDocument);
-            modelAndView.addObject("appDocument",appDocument);
+            modelAndView.addObject("appDocument", appDocument);
             String publishTime = DateUtils.DatePattern.PATTERN_DATE_YMD_POINT_HM.getDateStr(appDocument.getPublishTime());
-            modelAndView.addObject("publishTime",publishTime);
+            modelAndView.addObject("publishTime", publishTime);
             modelAndView.setViewName("/article/article_info");
-        }else {
+        } else {
             modelAndView.setViewName("index");
         }
 

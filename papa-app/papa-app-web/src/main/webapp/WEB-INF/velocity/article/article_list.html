@@ -41,10 +41,9 @@
 <div class="container large">
     <div class="pagination">
         <ul>
-            <li> <a href="javascript:void(0)">1</a> </li>
-            <li class="active"> <a href="javascript:void(0)">3</a> </li>
-            <li> <a href="javascript:void(0)">...</a> </li>
-            <li> <a href="javascript:void(0)">5</a> </li>
+            <li> <a href="/article/list?page=$!{previousPage}">$!{previousPage}</a> </li>
+            <li class="active">$!{currentPage}</li>
+            <li> <a href="/article/list?page=$!{nextPage}">$!{nextPage}</a></li>
         </ul>
     </div>
 </div>

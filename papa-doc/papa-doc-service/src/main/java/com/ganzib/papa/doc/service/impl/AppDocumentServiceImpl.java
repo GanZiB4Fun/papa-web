@@ -36,4 +36,11 @@ public class AppDocumentServiceImpl extends ServiceImpl<AppDocumentMapper, AppDo
         page.setRecords(docs);
         return page;
     }
+
+    @Override
+    public List<AppDocument> getAppDocumentList(Pager pager) {
+        Page<AppDocument> page = new Page<>(pager.getPageIndex(), pager.getPageSize());
+        List<AppDocument> docs = baseMapper.getAllArticleList(page);
+        return docs;
+    }
 }

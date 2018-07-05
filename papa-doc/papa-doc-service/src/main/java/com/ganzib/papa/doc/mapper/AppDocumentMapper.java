@@ -20,4 +20,7 @@ public interface AppDocumentMapper extends GenericMapper<AppDocument> {
 
     List<AppDocument> getArticleList(@Param("paramMap") Map<String, Object> paramMap, RowBounds rowBounds);
 
+
+    List<AppDocument> getAllArticleList(RowBounds rowBounds);
+
 }

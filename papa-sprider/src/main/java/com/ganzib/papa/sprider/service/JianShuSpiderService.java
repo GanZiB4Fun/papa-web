@@ -8,6 +8,7 @@ import com.ganzib.papa.sprider.constant.SHA1;
 import com.ganzib.papa.sprider.constant.WebConstant;
 import com.ganzib.papa.sprider.thread.SpriderThreadPool;
 import com.ganzib.papa.support.date.DateUtils;
+import com.ganzib.papa.support.util.Pager;
 import com.vdurmont.emoji.EmojiParser;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import us.codecraft.webmagic.selector.Html;
 import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -201,6 +203,10 @@ public class JianShuSpiderService {
                     } catch (Exception e) {
                         logger.error("error publish time can't parse");
                     }
+                }
+                if (img==null){
+                    Html html = new Html(content);
+                    img = html.xpath("//img/@src").get();
                 }
                 appDocument.setDocId(articleId);
                 appDocument.setTitle(EmojiParser.parseToAliases(title));

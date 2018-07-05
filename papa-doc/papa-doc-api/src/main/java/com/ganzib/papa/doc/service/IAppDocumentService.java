@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.service.IService;
 import com.ganzib.papa.doc.model.AppDocument;
 import com.ganzib.papa.support.util.Pager;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,5 +26,7 @@ public interface IAppDocumentService extends IService<AppDocument> {
     Boolean isServiceStart();
 
     Page<AppDocument> pageFindByParams(Map<String, Object> paramsMap, Pager pager);
+
+    List<AppDocument> getAppDocumentList(Pager pager);
 
 }
