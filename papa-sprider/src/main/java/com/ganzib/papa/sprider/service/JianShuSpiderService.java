@@ -81,7 +81,7 @@ public class JianShuSpiderService {
     }
 
 //    @Scheduled(cron = "0 0/10 * * * ?")
-    @Scheduled(cron = "0 12 18 ? * *")
+    @Scheduled(cron = "0 12 23 ? * *")
     public void spider() {
         logger.info("jian shu spider task start");
         if (!startFlag) {
@@ -101,7 +101,9 @@ public class JianShuSpiderService {
                 Html divHtml = new Html(divStr);
                 String url = divHtml.xpath("//div[@class='collection-wrap']/a/@href").get();
                 String tag = divHtml.xpath("//div[@class='collection-wrap']/a/h4[@class='name']/text()").get();
-                for (int i = 0; i <= 10; i++) {
+                boolean runFlag = true;
+                int i = 1;
+                do {
                     String realUrl = "https://www.jianshu.com/" + url + "?order_by=added_at&page=" + i;
                     Page articlePage = null;
                     try {
@@ -112,17 +114,25 @@ public class JianShuSpiderService {
                     if (articlePage != null) {
                         Html articleListHtml = articlePage.getHtml();
                         List<String> articleDivList = articleListHtml.xpath("//ul[@class='note-list']/li/div[@class='content']").all();
+                        if (articleDivList==null||articleDivList.size()==0){
+                            runFlag = false;
+                        }
                         for (String articleDiv : articleDivList) {
-                            ansySpider(articleDiv, tag);
+                            try {
+                                ansySpider(articleDiv, tag);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
-                }
+                    i++;
+                }while (runFlag && i<=1000);
             }
         }
 
     }
 
-    public void ansySpider(String divStr, String tag) {
+    public void ansySpider(String divStr, String tag) throws Exception{
         spriderThreadPool.addTask(new Runnable() {
             @Override
             public void run() {
