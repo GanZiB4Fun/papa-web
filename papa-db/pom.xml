@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>papa-db-jdbc</module>
+        <module>papa-db-cache</module>
     </modules>
 
 

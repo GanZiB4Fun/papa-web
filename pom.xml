@@ -29,6 +29,7 @@
                 <zookeeper.addr>127.0.0.1:2181</zookeeper.addr>
                 <redis.host>127.0.0.1</redis.host>
                 <redis.pass></redis.pass>
+                <redis.port>6379</redis.port>
                 <redis.maxTotal>20</redis.maxTotal>
                 <log.path>/home/ganzib/logs</log.path>
                 <log.level>DEBUG</log.level>
@@ -51,6 +52,7 @@
                 <zookeeper.addr>127.0.0.1:2181</zookeeper.addr>
                 <redis.host>127.0.0.1</redis.host>
                 <redis.pass></redis.pass>
+                <redis.port>6379</redis.port>
                 <redis.maxTotal>20</redis.maxTotal>
                 <log.path>/home/ganzib/logs</log.path>
                 <log.level>DEBUG</log.level>
