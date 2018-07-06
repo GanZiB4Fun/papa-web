@@ -18,15 +18,20 @@
                     <ul class="note-list">
                         #if($!{articleList}&&$!{articleList.size()}>0)
                         #foreach($article in $!{articleList})
-                        <li class="">
+                        <li class="have-img">
                             <div class="content">
                                 <a class="title" target="_blank" href="/article/info?docId=$!{article.docId}">$!{article.title}</a>
                                 <p class="abstract">
                                     $!{article.descri}
                                 </p>
+                                <a class="wrap-img" href="/article/info?docId=$!{article.docId}" target="_blank">
+                                    <img class="  img-blur-done" src="$!{article.coverImg}" alt="120">
+                                </a>
                                 <div class="meta">
-                                    <a class="nickname" target="_blank"
-                                       href="/article/list?page=1&rows=10&author=$!{article.authorName}">$!{article.authorName}</a>
+                                    <a class="nickname" target="_blank" href="/article/list?page=1&rows=10&author=$!{article.authorName}">$!{article.authorName}</a>
+                                    <a target="_blank" href="#">
+                                        <i class="iconfont ic-list-comments"></i> 3
+                                    </a>      <span><i class="iconfont ic-list-like"></i> 3</span>
                                 </div>
                             </div>
                         </li>
