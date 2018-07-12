@@ -1,9 +1,6 @@
 package com.ganzib.papa.sprider.service;
 
-import com.ganzib.papa.doc.model.AppDocument;
 import com.ganzib.papa.doc.model.AppNovel;
-import com.ganzib.papa.doc.service.IAppDocumentService;
-import com.ganzib.papa.doc.service.IAppJianShuSpiderAuthorService;
 import com.ganzib.papa.doc.service.IAppNovelService;
 import com.ganzib.papa.sprider.constant.SHA1;
 import com.ganzib.papa.sprider.constant.WebConstant;
@@ -115,6 +112,12 @@ public class XiaoShuoSpider {
                     if (page.getStatusCode() == 404) break;
                     List<String> divList = page.getHtml().xpath("//main[@id='main']/article/div[@class='post-content']").all();
                     for (String divStr : divList) {
+                        Html html = new Html(divStr);
+                        String infoUrl = html.xpath("//h2[@class='entry-title']/a/@href").get();
+                        String docId = SHA1.encode(infoUrl);
+                        if (appNovelService.selectById(docId) != null) {
+                            continue;
+                        }
                         try {
                             ansySpider(divStr, URLDecoder.decode(category));
                         } catch (Exception e) {
@@ -138,9 +141,7 @@ public class XiaoShuoSpider {
                 String descri = html.xpath("//div[@class='entry-content']/p/text()").get();
                 String content = "";
                 String docId = SHA1.encode(url);
-                if (appNovelService.selectById(docId) != null) {
-                    return;
-                }
+
                 AppNovel appNovel = new AppNovel();
                 Page page = null;
                 try {
