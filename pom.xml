@@ -55,7 +55,7 @@
                 <redis.port>6379</redis.port>
                 <redis.maxTotal>20</redis.maxTotal>
                 <log.path>/home/ganzib/logs</log.path>
-                <log.level>DEBUG</log.level>
+                <log.level>info</log.level>
                 <api.path>localhost:8080</api.path>
                 <admin.all.path>localhost:8080/admin</admin.all.path>
             </properties>

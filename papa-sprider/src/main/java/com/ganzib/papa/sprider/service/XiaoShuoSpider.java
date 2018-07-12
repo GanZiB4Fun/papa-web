@@ -81,7 +81,7 @@ public class XiaoShuoSpider {
 
     /*@Scheduled(cron = "0 12 23 ? * *")*/
     /*@Scheduled(cron = "0/1 * * * * ? ")*/
-    @Scheduled(cron = "0 25 23 * * ?")
+    @Scheduled(cron = "0 32 23 * * ?")
     public void spider() {
         logger.info("jian shu spider task start");
         if (!startFlag) {
@@ -97,10 +97,11 @@ public class XiaoShuoSpider {
         categoryList.add(URLEncoder.encode("近亲乱伦"));
         for (String category : categoryList) {
             Page page = null;
-            URLEncoder.encode("");
+            logger.info("We are crawl nover" + URLDecoder.decode(category));
             String url = "http://www.4438xx10.com/xiaoshuo/archives/category/" + category + "/page/{PAGE}";
             int i = 0;
             do {
+                logger.info("We are crawl nover " + URLDecoder.decode(category) + " at page" + i);
                 String listUrl = url.replace("{PAGE}", String.valueOf(i));
                 System.out.println(listUrl);
                 try {
@@ -141,7 +142,7 @@ public class XiaoShuoSpider {
                 String descri = html.xpath("//div[@class='entry-content']/p/text()").get();
                 String content = "";
                 String docId = SHA1.encode(url);
-
+                logger.info("We are crawl " + tag + " nover " + "《" + title + "》");
                 AppNovel appNovel = new AppNovel();
                 Page page = null;
                 try {
