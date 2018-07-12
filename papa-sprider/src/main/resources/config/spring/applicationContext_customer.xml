@@ -12,5 +12,7 @@
     <dubbo:reference interface="com.ganzib.papa.doc.service.IAppDocumentService" id="appDocumentService" check="false"/>
     <dubbo:reference interface="com.ganzib.papa.doc.service.IAppJianShuSpiderAuthorService"
                      id="appJianShuSpiderAuthorService" check="false"/>
+    <dubbo:reference interface="com.ganzib.papa.doc.service.IAppNovelService"
+                     id="appNovelService" check="false"/>
 
 </beans>

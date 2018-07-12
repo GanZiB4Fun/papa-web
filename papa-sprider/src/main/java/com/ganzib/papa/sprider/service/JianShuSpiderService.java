@@ -83,7 +83,7 @@ public class JianShuSpiderService {
     }
 
 //    @Scheduled(cron = "0 0/10 * * * ?")
-    @Scheduled(cron = "0 12 23 ? * *")
+@Scheduled(cron = "0 0 1 * * ?")
     public void spider() {
         logger.info("jian shu spider task start");
         if (!startFlag) {
