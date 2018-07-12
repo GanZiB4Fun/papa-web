@@ -83,7 +83,8 @@ public class XiaoShuoSpider {
 
 
     /*@Scheduled(cron = "0 12 23 ? * *")*/
-    @Scheduled(cron = "0 0 23 * * ?")
+    /*@Scheduled(cron = "0 0 23 * * ?")*/
+    @Scheduled(cron = "0/1 * * * * ? ")
     public void spider() {
         logger.info("jian shu spider task start");
         if (!startFlag) {
@@ -111,12 +112,7 @@ public class XiaoShuoSpider {
                     logger.info("GET LOSE");
                 }
                 if (page != null) {
-                    String title = page.getHtml().xpath("//title/text()").get();
-                    if (title != null) {
-                        if (title.equals("404")) {
-                            break;
-                        }
-                    }
+                    if (page.getStatusCode() == 404) break;
                     List<String> divList = page.getHtml().xpath("//main[@id='main']/article/div[@class='post-content']").all();
                     for (String divStr : divList) {
                         try {

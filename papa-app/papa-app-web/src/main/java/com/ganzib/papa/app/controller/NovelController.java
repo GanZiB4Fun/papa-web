@@ -68,7 +68,7 @@ public class NovelController {
 
         AppNovel appNovel = appNovelService.selectById(novelId);
         if (appNovel != null) {
-            modelAndView.addObject("appDocument", appNovel);
+            modelAndView.addObject("novel", appNovel);
             String publishTime = DateUtils.DatePattern.PATTERN_DATE_YMD_POINT_HM.getDateStr(appNovel.getCreateTime());
             modelAndView.addObject("publishTime", publishTime);
             modelAndView.setViewName("/novel/novel_info");
