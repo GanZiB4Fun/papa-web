@@ -1,6 +1,6 @@
 package com.ganzib.papa.db.redis;
 
-import com.swzh.news.support.utils.SerializeUtil;
+import com.ganzib.papa.support.util.SerializeUtil;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;

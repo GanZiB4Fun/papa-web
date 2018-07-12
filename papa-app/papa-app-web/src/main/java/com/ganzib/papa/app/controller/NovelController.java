@@ -1,9 +1,7 @@
 package com.ganzib.papa.app.controller;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.ganzib.papa.doc.model.AppDocument;
 import com.ganzib.papa.doc.model.AppNovel;
-import com.ganzib.papa.doc.service.IAppDocumentService;
 import com.ganzib.papa.doc.service.IAppNovelService;
 import com.ganzib.papa.support.date.DateUtils;
 import com.ganzib.papa.support.util.Pager;

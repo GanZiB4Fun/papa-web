@@ -25,9 +25,10 @@
             <artifactId>jedis</artifactId>
         </dependency>
         <dependency>
-            <artifactId>news-support</artifactId>
-            <groupId>com.swzh.news</groupId>
+            <groupId>com.ganzib</groupId>
+            <artifactId>papa-support</artifactId>
             <version>1.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
