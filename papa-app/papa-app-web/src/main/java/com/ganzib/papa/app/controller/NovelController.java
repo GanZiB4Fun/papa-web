@@ -36,6 +36,7 @@ public class NovelController {
     public ModelAndView docListPage(HttpServletRequest request,
                                     @RequestParam(value = "page", required = false) Integer pageIndex,
                                     @RequestParam(value = "rows", required = false) Integer rows,
+                                    @RequestParam(value = "title", required = false) String title,
                                     @RequestParam(value = "tag", required = false) String tag) {
         ModelAndView modelAndView = new ModelAndView("novel/novel_list");
         Pager pager = new Pager();
@@ -51,6 +52,7 @@ public class NovelController {
         pager.setPageSize(rows);
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("tag", tag);
+        paramMap.put("title", title);
         modelAndView.addObject("tagList", tagList);
         Page<AppNovel> appNovelPage = appNovelService.pageFindByParams(paramMap, pager);
         if (appNovelPage != null) {
