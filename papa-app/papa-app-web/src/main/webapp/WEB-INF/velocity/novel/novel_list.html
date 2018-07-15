@@ -11,7 +11,11 @@
 <div class="container collection">
     <div class="row">
         <div class="col-xs-24 col-sm-16 main">
-
+            #if($!{tagList}&&$!{tagList.size()}>0)
+            #foreach($tag in $!{tagList})
+            <a href="/novel/list?page=1&rows=10&tag=$!{tag}">$!{tag}</a>
+            #end
+            #end
             <div id="list-container">
                 <div class="container">
                     <!-- 文章列表模块 -->

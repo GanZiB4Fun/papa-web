@@ -2,11 +2,10 @@ package com.ganzib.papa.doc.service;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
-import com.ganzib.papa.doc.model.AppAdviceMessage;
-import com.ganzib.papa.doc.model.AppDocument;
 import com.ganzib.papa.doc.model.AppNovel;
 import com.ganzib.papa.support.util.Pager;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,4 +26,6 @@ public interface IAppNovelService extends IService<AppNovel> {
     Boolean isServiceStart();
 
     Page<AppNovel> pageFindByParams(Map<String, Object> paramsMap, Pager pager);
+
+    List<String> getTags();
 }

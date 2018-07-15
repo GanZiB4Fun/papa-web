@@ -2,11 +2,8 @@ package com.ganzib.papa.doc.service.impl;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.ganzib.papa.doc.mapper.AppAdviceMessageMapper;
 import com.ganzib.papa.doc.mapper.AppNovelMapper;
-import com.ganzib.papa.doc.model.AppAdviceMessage;
 import com.ganzib.papa.doc.model.AppNovel;
-import com.ganzib.papa.doc.service.IAppAdviceMessageService;
 import com.ganzib.papa.doc.service.IAppNovelService;
 import com.ganzib.papa.support.util.Pager;
 import org.springframework.stereotype.Service;
@@ -37,5 +34,10 @@ public class AppNovelServiceImpl extends ServiceImpl<AppNovelMapper, AppNovel> i
         List<AppNovel> docs = baseMapper.getArticleList(paramsMap, page);
         page.setRecords(docs);
         return page;
+    }
+
+    @Override
+    public List<String> getTags() {
+        return baseMapper.getTags();
     }
 }

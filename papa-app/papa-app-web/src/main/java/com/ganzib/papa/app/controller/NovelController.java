@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -44,10 +45,13 @@ public class NovelController {
         if (rows == null || rows > 100) {
             rows = 10;
         }
+
+        List<String> tagList = appNovelService.getTags();
         pager.setPageIndex(pageIndex);
         pager.setPageSize(rows);
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("tag", tag);
+        modelAndView.addObject("tagList", tagList);
         Page<AppNovel> appNovelPage = appNovelService.pageFindByParams(paramMap, pager);
         if (appNovelPage != null) {
             if (pageIndex > 1) {

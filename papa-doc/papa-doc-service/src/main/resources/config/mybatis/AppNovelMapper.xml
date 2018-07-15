@@ -21,4 +21,7 @@
         <include refid="whereList"/>
         ORDER BY create_time DESC
     </select>
+    <select id="getTags" resultType="java.lang.String">
+        SELECT tag FROM app_novel GROUP BY tag ;
+    </select>
 </mapper>
