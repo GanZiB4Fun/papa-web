@@ -81,7 +81,7 @@ public class XiaoShuoSpider {
 
     /*@Scheduled(cron = "0 12 23 ? * *")*/
     /*@Scheduled(cron = "0/1 * * * * ? ")*/
-    @Scheduled(cron = "0 06 18 * * ?")
+    @Scheduled(cron = "0 08 18 * * ?")
     public void spider() {
         logger.info("jian shu spider task start");
         if (!startFlag) {
