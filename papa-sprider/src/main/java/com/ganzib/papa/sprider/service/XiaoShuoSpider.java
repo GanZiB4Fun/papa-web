@@ -81,20 +81,20 @@ public class XiaoShuoSpider {
 
     /*@Scheduled(cron = "0 12 23 ? * *")*/
     /*@Scheduled(cron = "0/1 * * * * ? ")*/
-    @Scheduled(cron = "0 08 18 * * ?")
+    @Scheduled(cron = "0 40 18 * * ?")
     public void spider() {
         logger.info("jian shu spider task start");
         if (!startFlag) {
             return;
         }
         List<String> categoryList = new ArrayList<>();
-        categoryList.add(URLEncoder.encode("凌辱强暴"));
-        categoryList.add(URLEncoder.encode("都市激情"));
         categoryList.add(URLEncoder.encode("校园师生"));
         categoryList.add(URLEncoder.encode("群P交换"));
         categoryList.add(URLEncoder.encode("职业制服"));
         categoryList.add(URLEncoder.encode("同志小说"));
         categoryList.add(URLEncoder.encode("近亲乱伦"));
+        categoryList.add(URLEncoder.encode("都市激情"));
+        categoryList.add(URLEncoder.encode("凌辱强暴"));
         for (String category : categoryList) {
             Page page = null;
             logger.info("We are crawl nover" + URLDecoder.decode(category));
