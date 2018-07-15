@@ -9,7 +9,6 @@ import com.vdurmont.emoji.EmojiParser;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
@@ -17,7 +16,6 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.selector.Html;
 
-import javax.annotation.PostConstruct;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
@@ -54,7 +52,7 @@ public class XiaoShuoSpider {
 
     private static boolean startFlag = false;
 
-    @PostConstruct
+    //    @PostConstruct
     public void init() {
         new Thread(new Runnable() {
             @Override
@@ -81,7 +79,7 @@ public class XiaoShuoSpider {
 
     /*@Scheduled(cron = "0 12 23 ? * *")*/
     /*@Scheduled(cron = "0/1 * * * * ? ")*/
-    @Scheduled(cron = "0 40 18 * * ?")
+//    @Scheduled(cron = "0 40 18 * * ?")
     public void spider() {
         logger.info("jian shu spider task start");
         if (!startFlag) {
