@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta data-n-head="true" charset="utf-8">
+    <meta data-n-head="true" name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>$!{appDocument.title}</title>
     #parse("common/linkFile.html")
     <link rel="stylesheet" type="text/css" href="/css/jianshu_entry.css">
@@ -42,5 +45,13 @@
         </div>
     </div>
 </div>
+<script>
+    var deviceWidth = document.documentElement.clientWidth;
+
+    if (deviceWidth > 1080) {
+        deviceWidth = 1080;
+    }
+    document.documentElement.style.fontSize = deviceWidth / 25 + "px";
+</script>
 </body>
 </html>
