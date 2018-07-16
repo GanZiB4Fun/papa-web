@@ -1,6 +1,5 @@
 package com.ganzib.papa.app.controller;
 
-import com.ganzib.papa.app.utils.RespBase;
 import com.ganzib.papa.doc.model.AppAdviceMessage;
 import com.ganzib.papa.doc.service.IAppAdviceMessageService;
 import org.apache.commons.lang.StringUtils;
@@ -33,6 +32,11 @@ public class IndexController {
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = {"text/html;charset=UTF-8"})
     public ModelAndView toIndex() {
         return new ModelAndView("redirect:/index");
+    }
+
+    @RequestMapping(value = "/particles", method = RequestMethod.GET, produces = {"text/html;charset=UTF-8"})
+    public ModelAndView toHome() {
+        return new ModelAndView("particle");
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET, produces = {"text/html;charset=UTF-8"})
