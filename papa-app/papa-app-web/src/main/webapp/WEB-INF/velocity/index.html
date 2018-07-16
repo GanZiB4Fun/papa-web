@@ -100,7 +100,7 @@
                                         <h4>一些小黄文</h4>
                                         <p>爬虫采集的一些小黄文.</p>
                                         <div class="primary-button">
-                                            <a href="/article/list?page=1&rows=10">更多</a>
+                                            <a onclick="page(1)">更多</a>
                                         </div>
                                     </div>
                                 </div>
@@ -287,7 +287,23 @@
     </article>
 </section>
 
+<script type="text/javascript">
 
+    function page(pageNum) {
+        jQuery.ajax({
+            url: "/article/list",
+            type: "GET",
+            dataType: "text",
+            data: {
+                rows: 10,
+                page: pageNum,
+            },
+            success: function (data, status) {
+                location.href = "/article/list/"
+            }
+        });
+    }
+</script>
 <script src="/js/vendor/jquery-1.11.2.min.js"></script>
 <script src="/js/vendor/bootstrap.min.js"></script>
 <script src="/js/plugins.js"></script>

@@ -7,6 +7,9 @@
             <if test="paramMap.title!=null and paramMap.title!=''">
                 and title like CONCAT('%',#{paramMap.title},'%')
             </if>
+            <if test="paramMap.author!=null and paramMap.author!=''">
+                and author like CONCAT('%',#{paramMap.author},'%')
+            </if>
             <if test="paramMap.tag != null">
                 and tag = #{paramMap.tag}
             </if>

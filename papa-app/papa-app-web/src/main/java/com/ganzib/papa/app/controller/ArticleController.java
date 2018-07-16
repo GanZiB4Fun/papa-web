@@ -35,7 +35,8 @@ public class ArticleController {
     public ModelAndView docListPage(HttpServletRequest request,
                                     @RequestParam(value = "page", required = false) Integer pageIndex,
                                     @RequestParam(value = "rows", required = false) Integer rows,
-                                    @RequestParam(value = "author", required = false) Integer author,
+                                    @RequestParam(value = "author", required = false) String author,
+                                    @RequestParam(value = "title", required = false) String title,
                                     @RequestParam(value = "tag", required = false) String tag) {
         ModelAndView modelAndView = new ModelAndView("article/article_list");
         Pager pager = new Pager();
@@ -50,6 +51,8 @@ public class ArticleController {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("tag", tag);
         paramMap.put("author", author);
+        paramMap.put("title", title);
+
         Page<AppDocument> appDocumentPage = appDocumentService.pageFindByParams(paramMap, pager);
         if (appDocumentPage != null) {
             if (pageIndex > 1) {
@@ -60,6 +63,9 @@ public class ArticleController {
             modelAndView.addObject("nextPage", pageIndex + 1);
             modelAndView.addObject("articleList", appDocumentPage.getRecords());
         }
+        modelAndView.addObject("tag", tag);
+        modelAndView.addObject("title", title);
+        modelAndView.addObject("author", author);
         return modelAndView;
     }
 

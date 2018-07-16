@@ -37,6 +37,7 @@ public class NovelController {
                                     @RequestParam(value = "page", required = false) Integer pageIndex,
                                     @RequestParam(value = "rows", required = false) Integer rows,
                                     @RequestParam(value = "title", required = false) String title,
+                                    @RequestParam(value = "author", required = false) String author,
                                     @RequestParam(value = "tag", required = false) String tag) {
         ModelAndView modelAndView = new ModelAndView("novel/novel_list");
         Pager pager = new Pager();
@@ -53,7 +54,6 @@ public class NovelController {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("tag", tag);
         paramMap.put("title", title);
-        modelAndView.addObject("tagList", tagList);
         Page<AppNovel> appNovelPage = appNovelService.pageFindByParams(paramMap, pager);
         if (appNovelPage != null) {
             if (pageIndex > 1) {
@@ -64,6 +64,10 @@ public class NovelController {
             modelAndView.addObject("nextPage", pageIndex + 1);
             modelAndView.addObject("novelList", appNovelPage.getRecords());
         }
+        modelAndView.addObject("tagList", tagList);
+        modelAndView.addObject("tag", tag);
+        modelAndView.addObject("title", title);
+        modelAndView.addObject("author", author);
         return modelAndView;
     }
 

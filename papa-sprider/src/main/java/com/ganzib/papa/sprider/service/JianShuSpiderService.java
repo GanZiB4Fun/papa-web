@@ -8,7 +8,6 @@ import com.ganzib.papa.sprider.constant.SHA1;
 import com.ganzib.papa.sprider.constant.WebConstant;
 import com.ganzib.papa.sprider.thread.SpriderThreadPool;
 import com.ganzib.papa.support.date.DateUtils;
-import com.ganzib.papa.support.util.Pager;
 import com.vdurmont.emoji.EmojiParser;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,6 @@ import us.codecraft.webmagic.selector.Html;
 import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -82,8 +80,7 @@ public class JianShuSpiderService {
         }).start();
     }
 
-//    @Scheduled(cron = "0 0/10 * * * ?")
-@Scheduled(cron = "0 0 1 * * ?")
+    @Scheduled(cron = "0 0/10 * * * ?")
     public void spider() {
         logger.info("jian shu spider task start");
         if (!startFlag) {
