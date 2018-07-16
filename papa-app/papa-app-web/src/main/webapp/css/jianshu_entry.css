@@ -148,7 +148,7 @@ body.reader-night-mode #note-content-divide .content {
     color: #2f2f2f;
     word-break: break-word !important;
     word-break: break-all;
-    font-size: 16px;
+    font-size: 30px;
     font-weight: 400;
     line-height: 1.7
 }
