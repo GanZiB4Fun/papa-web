@@ -34,10 +34,6 @@ public class IndexController {
         return new ModelAndView("redirect:/index");
     }
 
-    @RequestMapping(value = "/particles", method = RequestMethod.GET, produces = {"text/html;charset=UTF-8"})
-    public ModelAndView toHome() {
-        return new ModelAndView("particle");
-    }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET, produces = {"text/html;charset=UTF-8"})
     public ModelAndView index(HttpServletRequest request) {

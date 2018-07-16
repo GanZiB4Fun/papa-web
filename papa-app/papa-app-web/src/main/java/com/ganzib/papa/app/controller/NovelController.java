@@ -89,4 +89,43 @@ public class NovelController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/demo", method = RequestMethod.GET, produces = {"text/html;charset=UTF-8"})
+    public ModelAndView demo(HttpServletRequest request,
+                             @RequestParam(value = "page", required = false) Integer pageIndex,
+                             @RequestParam(value = "rows", required = false) Integer rows,
+                             @RequestParam(value = "title", required = false) String title,
+                             @RequestParam(value = "author", required = false) String author,
+                             @RequestParam(value = "tag", required = false) String tag) {
+        ModelAndView modelAndView = new ModelAndView("novel/demo");
+        Pager pager = new Pager();
+        if (pageIndex == null) {
+            pageIndex = 1;
+        }
+        if (rows == null || rows > 100) {
+            rows = 5;
+        }
+
+        List<String> tagList = appNovelService.getTags();
+        pager.setPageIndex(pageIndex);
+        pager.setPageSize(rows);
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("tag", tag);
+        paramMap.put("title", title);
+        Page<AppNovel> appNovelPage = appNovelService.pageFindByParams(paramMap, pager);
+        if (appNovelPage != null) {
+            if (pageIndex > 1) {
+                modelAndView.addObject("previousPage", pageIndex - 1);
+
+            }
+            modelAndView.addObject("currentPage", appNovelPage.getCurrent());
+            modelAndView.addObject("nextPage", pageIndex + 1);
+            modelAndView.addObject("novelList", appNovelPage.getRecords());
+        }
+        modelAndView.addObject("tagList", tagList);
+        modelAndView.addObject("tag", tag);
+        modelAndView.addObject("title", title);
+        modelAndView.addObject("author", author);
+        return modelAndView;
+    }
+
 }
