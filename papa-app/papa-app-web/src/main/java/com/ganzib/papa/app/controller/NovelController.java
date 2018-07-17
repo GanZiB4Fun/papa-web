@@ -102,7 +102,7 @@ public class NovelController {
             pageIndex = 1;
         }
         if (rows == null || rows > 100) {
-            rows = 5;
+            rows = 10;
         }
 
         List<String> tagList = appNovelService.getTags();

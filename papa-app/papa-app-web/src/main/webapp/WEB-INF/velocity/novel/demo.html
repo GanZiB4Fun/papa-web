@@ -1,38 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+    <meta name="author" content="Vincent Garreau"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" media="screen" href="/css/style.css">
     <meta charset="UTF-8">
     <title>文章列表</title>
     #parse("common/linkFile.html")
     <link rel="stylesheet" type="text/css" href="/css/jianshu_list.css">
     <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <style type="text/css">
+        .container {
+            background: #000000;
+            /*background: transparent;*/
+            padding: 1rem;
+            margin: 0 auto;
+            border-radius: 0.2rem;
+            counter-reset: pagination;
+            text-align: center;
+        }
+    </style>
 </head>
-<body lang="zh-CN" class="reader-black-font">
-<input type="hidden" id="tag" value="$!{tag}"/>
-<input type="hidden" id="author" value="$!{author}"/>
-<div class="container collection">
-    <div class="row">
-        <div class="col-xs-24 col-sm-16 main">
-            #if($!{tagList}&&$!{tagList.size()}>0)
-            #foreach($tag in $!{tagList})
-            <a href="/novel/list?page=1&rows=10&tag=$!{tag}">$!{tag}</a>
-            #end
-            #end
+<body style="position: relative;padding-top: 0 !important;">
+
+<div id="particles-js" class="container collection">
+    <div class="row" style="background:transparent; position: absolute;width:80%;top:0;left: 10%;margin: 0 auto;">
+        <div class="col-xs-12 col-sm-16 main">
             <div id="list-container">
                 <div class="container">
                     <!-- 文章列表模块 -->
+                    #if($!{tagList}&&$!{tagList.size()}>0)
+                    #foreach($tag in $!{tagList})
+                    <a href="/novel/list?page=1&rows=10&tag=$!{tag}">$!{tag}</a>
+                    #end
+                    #end
                     <ul class="note-list">
                         #if($!{novelList}&&$!{novelList.size()}>0)
                         #foreach($novel in $!{novelList})
-                        <li class="have-img">
+                        <li>
                             <div class="content">
                                 <a class="title" target="_blank" href="/novel/info?novelId=$!{novel.novelId}">$!{novel.title}</a>
-                                <p class="abstract">
+                                <p class="abstract" style="text-align: left">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     $!{novel.descri}
                                 </p>
                                 <div class="meta">
                                     <a class="nickname" target="_blank"
-                                       href="/novel/list?page=1&rows=10&author=$!{novel.authorName}">$!{novel.authorName}</a>
+                                       href="/novel/list?page=1&rows=5&author=$!{novel.authorName}">$!{novel.authorName}</a>
                                     <a target="_blank" href="#">
                                         <i class="iconfont ic-list-comments"></i> 3
                                     </a> <span><i class="iconfont ic-list-like"></i> 3</span>
@@ -47,7 +64,7 @@
         </div>
     </div>
 </div>
-<div class="container large">
+<div class="container large" style="background:transparent; position: absolute;margin-top: 50%;margin-left: 30%">
     <div class="pagination">
         <ul>
             <li><a onclick="page(${previousPage})">$!{previousPage}</a></li>
@@ -56,7 +73,9 @@
         </ul>
     </div>
 </div>
-</body>
+
+<input type="hidden" id="tag" value="$!{tag}"/>
+<input type="hidden" id="author" value="$!{author}"/>
 <script type="text/javascript">
 
     function page(pageNum) {
@@ -72,4 +91,14 @@
         window.location.href = url;
     }
 </script>
+
+
+<!-- scripts -->
+<script src="/js/particles/particles.js"></script>
+<script src="/js/particles/app.js"></script>
+
+<!-- stats.js -->
+<script src="/js/particles/lib/stats.js"></script>
+
+</body>
 </html>
