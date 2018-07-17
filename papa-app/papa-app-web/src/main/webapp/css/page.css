@@ -109,6 +109,5 @@
 }
 .large li:nth-last-child(3):after {
     padding: 0 1rem;
-    content: "...";
 }
 
