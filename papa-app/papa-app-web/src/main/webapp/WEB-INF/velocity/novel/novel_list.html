@@ -49,7 +49,7 @@
                                 </p>
                                 <div class="meta">
                                     <a class="nickname" target="_blank"
-                                       href="/novel/list?page=1&rows=10&author=$!{novel.authorName}">$!{novel.authorName}</a>
+                                       href="/novel/list?page=1&rows=5&author=$!{novel.authorName}">$!{novel.authorName}</a>
                                     <a target="_blank" href="#">
                                         <i class="iconfont ic-list-comments"></i> 3
                                     </a> <span><i class="iconfont ic-list-like"></i> 3</span>
@@ -63,14 +63,14 @@
             </div>
         </div>
     </div>
-    <div class="container large" style="background:transparent; position: absolute;">
-        <div class="pagination">
-            <ul>
-                <li><a onclick="page(${previousPage})">$!{previousPage}</a></li>
-                <li class="active">$!{currentPage}</li>
-                <li><a onclick="page(${nextPage})">$!{nextPage}</a></li>
-            </ul>
-        </div>
+</div>
+<div class="container large" style="background:transparent; position: absolute;margin-top: 50%;margin-left: 30%">
+    <div class="pagination">
+        <ul>
+            <li><a onclick="page(${previousPage})">$!{previousPage}</a></li>
+            <li class="active">$!{currentPage}</li>
+            <li><a onclick="page(${nextPage})">$!{nextPage}</a></li>
+        </ul>
     </div>
 </div>
 
